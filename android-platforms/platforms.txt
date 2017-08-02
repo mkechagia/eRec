@@ -2,4 +2,4 @@ Already downloaded android platforms can be found in the following repo.
 
 https://github.com/mkechagia/eRec-data.git
 
-Please clone and copy the files into the android-platforms folder.
+Please clone and copy the files into the android-platforms folder. You need to do this before using Soot to analyze the .apk files.
