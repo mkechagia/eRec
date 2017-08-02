@@ -1,0 +1,33 @@
+# Use Java doclet (Tags.java in ../eRec/api/processing/doc/doclet/) to extract from all the .java files of an API version the methods with @throws and throws in signatures. Note: exceptions with throws in their signature are in the online documentation anyway. 
+
+
+# [1]. To compile the Java doclet do the following:
+
+# Move to the doclet folder
+cd ../eRec/api/processing/doc/doclet/
+
+# Compile Tags.java
+javac -cp $JAVA_HOME/lib/tools.jar:. Tags.java
+
+# Note: You should set $JAVA_HOME correctly. For instance, the file tools.jar will be in a folder such as: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home/lib/tools.jar (for MacOS X)
+
+
+# [2]. To run the Java doclet (for EACH Android API version) do the following:
+
+# Execute the command below (NOT for private methods; only public and protected that exist in the documentation reference) from the correct directories; # is the current API version.
+# Run from eRec/api/processing/doc/doclet
+for var in $(find $ANDROID/sources/android-#/android -type f -iname "*.java"); do javadoc -sourcepath $ANDROID/sources/android-#/android -doclet Tags -docletpath .- ${var} > ${var}doc.txt; done
+
+# Note 1: Where $ANDROID is where you have downloaded the Android platform, e.g. /../Programs/android/sdk/.
+# The Android versions will be downloaded under the folder /../Programs/android/sdk/sources or $ANDROID/sources/.
+# Note 2: The *output* of the doclet will be .txt files with extracted methods and exceptions from the Java files of each API version. The .txt files will be placed in the same folder where the Java files exist.
+
+
+# [3]. To run the Java doclet (for EACH Java API version) do the following:
+
+# Execute the command below (NOT for private methods; only public and protected that exist in the documentation reference) from the correct directories; # is the current Java version.
+# Run from ../eRec/api/processing/doc/doclet/
+for var in $(find ../eRec/api/processing/doc/sources/java-#/java -type f -iname "*.java"); do javadoc -sourcepath ../eRec/api/processing/doc/sources/java-#/java -doclet Tags -docletpath .- ${var} > ${var}doc.txt; done
+
+# Note 3: In ../eRec/api/processing/doc/sources/ you can download and unzip the source code of the Java API.
+# Note 4: This method can be applied on any other Java API or library (e.g. apache-commons-lang). You need to download the source code of the library and set the absolute path where the .java files exist on your computer in the command above.

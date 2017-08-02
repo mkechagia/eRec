@@ -1,0 +1,6 @@
+Already analyzed APIs can be found in the following repo.
+
+https://github.com/mkechagia/eRec-data.git
+
+Please clone and copy the files into the JSON folder.
+
