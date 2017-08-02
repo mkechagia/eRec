@@ -1,1 +1,14 @@
-This the folder for the processed stack traces.
+This is the folder for the processed stack traces in the following form. For instance:
+
+Frq, API method, API Exception, Root Exception
+100 , android.app.Activity.setContentView , android.view.InflateException , java.lang.OutOfMemoryError
+
+A list of API culprits from stack traces can be found by applying methods presented in [1].
+
+[1] Maria Kechagia, Dimitris Mitropoulos, and Diomidis Spinellis. 2015. Charting the API minefield using software telemetry data. Empirical Softw. Engg. 20, 6 (December 2015), 1785-1830. DOI=http://dx.doi.org/10.1007/s10664-014-9343-7.
+
+Culprits (with the following names and types) can be added to the current folder. These data will be used for the set operations.
+
+- android-api-culprits.txt
+
+- java-api-culprits.txt
