@@ -1,0 +1,5 @@
+Already downloaded android platforms can be found in the following repo.
+
+https://github.com/mkechagia/eRec-data.git
+
+Please clone and copy the files into the android-platforms folder.
