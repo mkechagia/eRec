@@ -1,1 +1,7 @@
 Here should be added the .jar files to be analyzed.
+
+For instance, a sample of .jar files can be found in the DaCapo benchmark [1] and in the maven repository [2].
+
+[1] http://www.dacapobench.org/
+
+[2] https://mvnrepository.com/
