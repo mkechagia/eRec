@@ -1,1 +1,3 @@
 Here should be added the .apk files to be analyzed.
+
+For instance, a sample of .apk files can be found in: https://archive.org/details/android_apps.
