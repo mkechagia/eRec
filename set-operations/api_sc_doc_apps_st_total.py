@@ -505,55 +505,6 @@ def find_com_api_methd_apps_doc_sc_total(doc_dict, apps_dict, sc_dict):
 	print "No of common API methods in API source code (API sc), API reference documentation (API doc), and apps: ", counter_api_m_sc_doc_apps
 	print "No of common API methods in apps, API sc, API doc with undocumented exceptions (in apps and API sc, but not in API doc): ", c, "\n"
 
-# compare pairs of api methods and exceptions from documentation, apps, and API source code analysis
-def find_com_api_methd_apps_doc_sc(doc_dict, apps_dict, sc_dict):
-	counter = 0
-	c = 0
-	counter_api_m_sc_doc_apps = 0
-	apps_api = Set(apps_dict.keys())
-	doc_api = Set(doc_dict.keys())
-	sc_api_keys = sc_dict.keys()
-	sc_api = Set(sc_dict.keys())
-	# common API methods in API reference and apps
-	common_api = list(apps_api.intersection(doc_api))
-	for k, l in enumerate(common_api):
-		if (common_api[k] in sc_api_keys):
-			counter_api_m_sc_doc_apps = counter_api_m_sc_doc_apps + 1
-			# API documentation exceptions
-			doc_exc = doc_dict.get(common_api[k])
-			at_throws = Set(doc_exc.get('@throws'))
-			sig_throws = Set(doc_exc.get('throws'))
-			t_doc_exc = at_throws.union(sig_throws)
-			# apps exceptions
-			apps_exc = Set(apps_dict.get(common_api[k]))
-			# exceptions that exist in apps but not in doc
-			t_exc = apps_exc.difference(t_doc_exc)
-			if (len(t_exc) > 0):
-				counter = counter + 1
-			# common exceptions in apps and doc
-			t_exc_1 = apps_exc.intersection(t_doc_exc)
-			#if (len(t_exc_1) > 0):
-				#print common_api[k], " ", t_exc_1
-			# API source code exceptions
-			sc_exc = sc_dict.get(common_api[k])
-			intra = Set(sc_exc.get('intra_proced'))
-			inter = Set(sc_exc.get('inter_proced'))
-			t_sc_exc = intra.union(inter)
-			# exceptions in apps and sc but not in doc
-			sc_apps = t_exc.intersection(t_sc_exc)
-			l_sc_apps = list(sc_apps)
-			if (len(l_sc_apps) > 0):
-				dict = apps_dict.get(common_api[k])
-				for m, n in enumerate(l_sc_apps):
-					frq = dict.get(l_sc_apps[m])
-					print "API method: ", common_api[k], " common excep in apps, sc (not in doc): ", l_sc_apps[m], " frq: ", int(frq)
-				c = c + 1
-				#print common_api[k], " ", sc_apps
-	print "No of common apis in doc and apps: ", len(common_api)
-	print "No of api methods with undocumented exceptions in apps (doc Vs. apps): ", counter
-	print "Common apis in sc, doc, apps: ", counter_api_m_sc_doc_apps
-	print "Methods with common exc in apps, sc, not in doc: ", c
-
 # run main
 if __name__ == "__main__":
 	main()
