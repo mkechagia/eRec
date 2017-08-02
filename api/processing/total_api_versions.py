@@ -54,8 +54,8 @@ def main():
 	add_dict_to_JSON(doc_dict, analysis_type)
 
 	# dictionary from all API (source code) versions (total_versions_sc.json)
-	#sc_dict = update_sc_dict_total_ver(path, analysis_type)
-	#add_dict_to_JSON_sc(sc_dict, analysis_type)
+	sc_dict = update_sc_dict_total_ver(path, analysis_type)
+	add_dict_to_JSON_sc(sc_dict, analysis_type)
 
 # store API methods and exceptions from documentation -all versions
 def update_doc_dict_total_ver(path, analysis_type):
