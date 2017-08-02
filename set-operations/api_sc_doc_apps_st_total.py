@@ -16,7 +16,7 @@ Input: .json file from Java APIs, stack traces, as well as undocumented exceptio
 Output: report of the results from the application of set operations on API source code,
 		documentation, apps, and stack traces.
 
-Note: You can comment out operations that you don't want to run and
+NOTE: You can comment out operations that you don't want to run and
 	  remove comments to print the resulted sets of API methods and operations.
 '''
 
@@ -355,8 +355,7 @@ def get_apps_dict_total(path, analysis_type):
 	# add lines to a list
 	lines = f.readlines()
 	for l, k in enumerate(lines):
-		# split line to find the api methods and exceptions
-		#line = re.split("[0-9]+\s+", lines[l])
+		# split line to find the API methods and exceptions
 		if (re.search("\s+"+analysis_type+"\.", lines[l])):
 			line = re.split("\s+"+analysis_type+"\.", lines[l])
 			elem = re.split(":", line[1])
@@ -407,9 +406,6 @@ def find_com_api_methd_apps_doc_total(doc_dict, apps_dict):
 	doc_api = Set(doc_dict.keys())
 	# common API methods in API reference and apps
 	common_api = list(apps_api.intersection(doc_api))
-	#print len(apps_api) -> 2550
-	#print len(doc_api) -> 84421
-	#print len(common_api) -> 2549
 	for k, l in enumerate(common_api):
 		# keep only method name; not the arguments to compare with the stack traces
 		api_mthd = re.split("\(", common_api[k])
@@ -488,6 +484,7 @@ def find_com_api_methd_apps_doc_sc_total(doc_dict, apps_dict, sc_dict):
 			# exceptions in apps and sc but not in doc
 			#sc_apps = t_exc.intersection(t_sc_exc)
 			sc_apps = t_exc.intersection(sc_exc)
+			# For without frqs use the three next lines
 			#if (len(sc_apps) > 0):
 			#	c = c + 1
 				#print (common_api[k], " ", sc_apps)
@@ -498,7 +495,7 @@ def find_com_api_methd_apps_doc_sc_total(doc_dict, apps_dict, sc_dict):
 				dict = apps_dict.get(common_api[k])
 				for m, n in enumerate(l_sc_apps):
 					frq = dict.get(l_sc_apps[m])
-					print "API method: ", common_api[k], " common excep in apps, sc (not in doc): ", l_sc_apps[m], " frq: ", int(frq)
+					#print "API method: ", common_api[k], " common excep in apps, sc (not in doc): ", l_sc_apps[m], " frq: ", int(frq)
 				c = c + 1
 				#print common_api[k], " ", sc_apps
 
