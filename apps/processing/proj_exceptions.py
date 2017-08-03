@@ -145,10 +145,7 @@ def get_right_API_version(java_version):
 def read_right_javadoc_version(api_version):
 	if (api_version) is not None :
 		is_api_version = False
-		#json_file = analysis_type + "-" + api_version + ".json"
-		json_file = "commons-io-2.5.json"
-		#json_file = "commons-collections-COLLECTIONS_3_2_1.json"
-		#json_file= "commons-lang3-3.6-src.json"
+		json_file = analysis_type + "-" + api_version + ".json" # for 3rd-party Java libs find the right .json file, i.e.: json_file = "commons-io-2.5.json"
 		for subdir, dirs, files in os.walk(path_JSON):
 			for name in files:
 				if re.search(json_file, name):
