@@ -1,0 +1,6 @@
+First, clone the eRec (https://github.com/mkechagia/eRec.git) and eRec-data (https://github.com/mkechagia/eRec-data.git) repositories.
+
+- eRec: includes the source code for the analysis and folders for the sets (inputs) to be examined.
+- eRec-data: has already processed data from the eRec analysis. You can use these data into the eRec to directly apply the set operations.
+
+Use the command “sh run-analysis-android.sh” only for the Android API and “sh run-analysis-java.sh” for the Java API and 3rd-party Java libraries. We have two scripts, because we need different processing for the .apk files (Android) and the .jar files (Java API and 3rd-party libraries). Caution! Please, edit first the two scripts above and provide the right inputs before you continue with the analysis.
