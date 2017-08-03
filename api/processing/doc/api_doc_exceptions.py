@@ -35,10 +35,6 @@ def main():
 	path_doc = sys.argv[1]
 	analysis_type = sys.argv[2]
 	read_new_javadoc_version(path_doc, analysis_type)
-	#file = "/Users/marki/Desktop/eRec/api/processing/doc/sources/java-8/java/lang/Class.javadoc.txt"
-	#analysis_type = "java"
-	#doc_dict = {}
-	#parse_doc(file, doc_dict, analysis_type)
 
 # open the javadoc files of the current API version 
 def read_new_javadoc_version(path, analysis_type):
