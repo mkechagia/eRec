@@ -24,9 +24,9 @@ for the analysis of an API of version X.
 Then, we run the following script as many times as the number of the different API versions.
 
 Output:
-For each API version, .json file (androi-#_source.json)
+For each API version, .json file (e.g. androi-#_source.json, java-#_source.json)
 stored in the JSON folder (eRec/api/JSON).
-For your convenience, there are already these files in the JSON folder.
+For your convenience, there are already these files in the JSON folder of the eRec-data.
 '''
 
 # libraries for the graphs check http://networkx.lanl.gov/archive/networkx-1.5/tutorial/tutorial.html
@@ -76,8 +76,8 @@ p10 = "[a-z]+[a-zA-Z0-9\$]*\(.*\)"
 
 # main method
 def main():
-	path = sys.argv[1]
-	path2 = sys.argv[2]
+	path = sys.argv[1] # folder where the app belongs to
+	path2 = sys.argv[2] # API version
 	analysis_type = sys.argv[3]
 	read_folder(path, analysis_type)
 	get_propagated_exceptions()
