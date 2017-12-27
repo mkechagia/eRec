@@ -95,7 +95,7 @@ fi = open(analysis_type+"-doc-excps.txt", "wb")
 global fo
 fo = open(analysis_type+"-undoc-excps.txt", "wb")
 global p11
-p11 = "(specialinvoke|staticinvoke|virtualinvoke).*[\<]("+analysis_type+"4)\..*\s[a-z]+[a-zA-Z\$0-9]*\([a-zA-Z\$\_0-9\[\]\.\,\s]*\)"
+p11 = "(specialinvoke|staticinvoke|virtualinvoke).*[\<]("+analysis_type+")\..*\s[a-z]+[a-zA-Z\$0-9]*\([a-zA-Z\$\_0-9\[\]\.\,\s]*\)"
 
 def main():
 	# open and parse apk files
