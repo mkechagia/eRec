@@ -274,7 +274,7 @@ def get_propagated_exceptions():
 				#list_success_exc.append(exc_lst[n])
 				attributes.setdefault("intra_proced", []).append(exc_lst[n])
 			# dictionary for node's successors
-			g_dict = nx.bfs_successors(DG, nd)
+			g_dict = dict(nx.bfs_successors(DG, nd))
 			# dictionary keys as successors
 			g_keys = g_dict.keys()
 			successors = []
