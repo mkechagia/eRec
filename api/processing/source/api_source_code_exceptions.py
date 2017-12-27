@@ -7,7 +7,7 @@ __email__= "mkechagiaATaueb.gr"
 
 '''
 This program parses jimple files (produced by Soot) 
-from a Java API (e.g. Android and Java API)
+from a Java API (e.g. Android, Java API, and 3rd-party Java libraries)
 and constructs a graph of methods (nodes)
 and exceptions (attributes)
 that the methods can throw. 
@@ -29,7 +29,7 @@ stored in the JSON folder (eRec/api/JSON).
 For your convenience, there are already these files in the JSON folder of the eRec-data.
 '''
 
-# libraries for the graphs check http://networkx.lanl.gov/archive/networkx-1.5/tutorial/tutorial.html
+# libraries for the graphs check https://networkx.github.io/documentation/stable/release/release_dev.html
 import pydot
 import networkx as nx
 import matplotlib.pyplot as plt
