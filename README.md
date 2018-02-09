@@ -33,7 +33,7 @@ For the analysis of the Android API and apps, we have used the Soot framework [3
 * License:
 
 '''
-Copyright 2017 Maria Kechagia
+Copyright 2018 Maria Kechagia
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
