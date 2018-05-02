@@ -44,3 +44,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 '''
+
+This repo includes material for the following work. Please cite as in the following:
+
+Maria Kechagia, Marios Fragkoulis, Panos Louridas, Diomidis Spinellis. The Exception Handling Riddle: An Empirical Study on the Android API. Journal of Systems and Software. 2018. DOI: 10.1016/j.jss.2018.04.034. URL: http://www.sciencedirect.com/science/article/pii/S0164121218300724.
