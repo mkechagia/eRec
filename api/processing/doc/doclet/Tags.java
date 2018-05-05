@@ -1,5 +1,5 @@
 /*
- * Copyright [2017] [Maria Kechagia]
+ * Copyright [2018] [Maria Kechagia]
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,13 +66,19 @@ public class Tags {
                 }
                 if (tags.length > 0) {
                     for (int k=0; k < tags.length; k++) {
-                        System.out.println("Throws:" + tags[k].exceptionName());
+                        Type eType = tags[k].exceptionType();
+                        String exc = tags[k].exceptionName();
+                        if (!(eType == null)) {
+                            System.out.println("Throws:" + eType);
+                        } else {
+                            System.out.println("Throws:" + exc);
+                        }
                         t = t + 1;
                     }
                 } 
                 if (exceptions.length > 0) {
                     for (int l=0; l < exceptions.length; l++) {
-                        System.out.println("Exception:" + exceptions[l]);
+                        System.out.println("Exception:" + exceptions[l].qualifiedTypeName());
                         e = e + 1;
                     }
                 }
