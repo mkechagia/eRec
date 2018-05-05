@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 __author___= "Maria Kechagia"
-__copyright__= "Copyright 2017"
+__copyright__= "Copyright 2018"
 __license__= "Apache License, Version 2.0"
-__email__= "mkechagiaATaueb.gr"
+__email__= "mkechagiaATaueb.gr;m.kechagia@tudelft.nl"
 
 
 '''
@@ -278,7 +278,28 @@ def calculate_API_methods_exceptions(api_version, doc_dict):
 def add_dict_to_JSON(api_version, doc_dict):
 	file_name = api_version+'.json'
 	with open(file_name, 'w') as fp:
+		fully_qualif_enames(doc_dict)
 		json.dump(doc_dict, fp, indent = 4)
+
+def fully_qualif_enames(doc_dict):
+	dict = {}
+	keys = doc_dict.keys()
+	for k, l in enumerate(keys):
+		dict = doc_dict.get(keys[k])
+		# for @throws comments
+		b = dict.get("@throws")
+		# for throws in method signature
+		d = dict.get("throws")
+		if ((len(b) > 0) and (len(d) > 0)):
+			for r, p in enumerate(b):
+				if (not re.search("\.", b[r])):
+					print b[r]
+					for z, t in enumerate(d):
+						l_d = re.split("\.", d[z])
+						if (b[r] == l_d[len(l_d) - 1]):
+							#print b[r], d[z]
+							b[r] = d[z]
+							#print b[r], d[z]
 
 # run main
 if __name__ == "__main__":
