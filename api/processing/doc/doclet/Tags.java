@@ -68,7 +68,7 @@ public class Tags {
                     for (int k=0; k < tags.length; k++) {
                         Type eType = tags[k].exceptionType();
                         String exc = tags[k].exceptionName();
-                        if (!(eType == null)) {
+                        if (eType != null) {
                             System.out.println("Throws:" + eType);
                         } else {
                             System.out.println("Throws:" + exc);
