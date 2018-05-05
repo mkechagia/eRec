@@ -109,21 +109,49 @@ def parse_doc(file, doc_dict, analysis_type):
 				b = dict.setdefault("@throws", [])
 				d = dict.setdefault("throws", [])
 			if ((l + 1) < len(lines)):
+				# Method -> Hidden|Method
 				if re.search("(Hidden|Method):", lines[l + 1]):
-					# case: @hide method
+					# Method -> Hidden
 					if re.search("Hidden:", lines[l + 1]):
-						dict.setdefault("Hidden:", []).append("Y")
-					c = 0
-					dict = {}
-					continue
+						# Method -> Hidden -> Method|_
+						if ((l + 2) < len(lines)) and ((re.search("(Method):", lines[l + 2])) or (re.search("^\s*$", lines[l + 2]))):
+							dict.setdefault("Hidden:", []).append("Y")
+							c = 0
+							dict = {}
+							continue
+						# Method -> Hidden -> Throws|Exception
+						elif ((l + 2) < len(lines)) and (re.search("(Throws|Exception):", lines[l + 2])):
+							dict.setdefault("Hidden:", []).append("Y")
+					# Method -> Method
+					if re.search("Method:", lines[l + 1]):
+							c = 0
+							dict = {}
+							continue
+				# Method -> Abstract
 				if re.search("Abstract method!", lines[l + 1]):
+					# Method -> Abstract -> Throws|Exception
 					if ((l + 2) < len(lines)) and (re.search("(Throws|Exception):", lines[l + 2])):
-						dict.setdefault("Abstract:", []).append("Y")
-					elif ((l + 2) < len(lines)) and ((re.search("Method:", lines[l + 2])) or (re.search("^\s*$", lines[l + 2]))):
+						#print "Abstract method: " + lines[l]
+						#print "Exception: " + lines[l + 2]
+						dict.setdefault("Abstract:", []).append("Y") 
+					# Method -> Abstract -> Method|_
+					elif ((l + 2) < len(lines)) and ((re.search("(Method):", lines[l + 2])) or (re.search("^\s*$", lines[l + 2]))):
 						dict.setdefault("Abstract:", []).append("Y")
 						c = 0
 						dict = {}
 						continue
+					# Method -> Abstract -> Hidden
+					elif ((l + 2) < len(lines)) and (re.search("(Hidden):", lines[l + 2])):
+						dict.setdefault("Hidden:", []).append("Y")
+						# Method -> Abstract -> Hidden -> Throws|Exception
+						if ((l + 3) < len(lines)) and (re.search("(Throws|Exception):", lines[l + 3])):
+							dict.setdefault("Abstract:", []).append("Y")
+						# Method -> Abstract -> Hidden -> Method|_
+						elif ((l + 3) < len(lines)) and ((re.search("(Method):", lines[l + 3])) or (re.search("^\s*$", lines[l + 3]))):
+							dict.setdefault("Abstract:", []).append("Y")
+							c = 0
+							dict = {}
+							continue
 		# for @throws comments
 		elif (re.search("Throws:", lines[l]) and (c == 1)):
 			thr = re.split(":", lines[l])
@@ -138,6 +166,7 @@ def parse_doc(file, doc_dict, analysis_type):
 					continue
 		# for throws in method signature
 		elif (re.search("Exception:", lines[l]) and (c == 1)):
+			#print "Found Exception for method: " + str(lines[l-2])
 			thr = re.split(":", lines[l])
 			th = re.split("\n", thr[1])
 			t_exc = keep_exc_name(th[0])
