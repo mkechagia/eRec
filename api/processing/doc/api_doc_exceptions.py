@@ -156,7 +156,8 @@ def parse_doc(file, doc_dict, analysis_type):
 		elif (re.search("Throws:", lines[l]) and (c == 1)):
 			thr = re.split(":", lines[l])
 			th = re.split("\n", thr[1])
-			t_exc = keep_exc_name(th[0])
+			#t_exc = keep_exc_name(th[0])
+			t_exc = th[0]
 			s_t_exc = re.sub("\<[\/]*code\>", "", t_exc)
 			dict.setdefault("@throws", []).append(s_t_exc)
 			if ((l + 1) < len(lines)):
@@ -169,7 +170,8 @@ def parse_doc(file, doc_dict, analysis_type):
 			#print "Found Exception for method: " + str(lines[l-2])
 			thr = re.split(":", lines[l])
 			th = re.split("\n", thr[1])
-			t_exc = keep_exc_name(th[0])
+			#t_exc = keep_exc_name(th[0])
+			t_exc = th[0]
 			dict.setdefault("throws", []).append(t_exc)
 			if ((l + 1) < len(lines)):
 				if re.search("Method:", lines[l + 1]) or (re.search("^\s*$", lines[l + 1])):
